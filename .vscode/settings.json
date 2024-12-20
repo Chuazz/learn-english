@@ -1,0 +1,16 @@
+{
+   "editor.defaultFormatter": "biomejs.biome",
+   "[json]": {
+      "editor.defaultFormatter": "biomejs.biome"
+   },
+   "[typescript]": {
+      "editor.defaultFormatter": "biomejs.biome"
+   },
+   "[javascript]": {
+      "editor.defaultFormatter": "biomejs.biome"
+   },
+   "cSpell.words": ["commiting", "directus", "turbopack", "vercel"],
+   "[dockercompose]": {
+      "editor.defaultFormatter": "ms-azuretools.vscode-docker"
+   }
+}
