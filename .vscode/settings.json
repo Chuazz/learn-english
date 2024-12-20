@@ -1,16 +1,20 @@
 {
-   "editor.defaultFormatter": "biomejs.biome",
-   "[json]": {
-      "editor.defaultFormatter": "biomejs.biome"
-   },
-   "[typescript]": {
-      "editor.defaultFormatter": "biomejs.biome"
-   },
-   "[javascript]": {
-      "editor.defaultFormatter": "biomejs.biome"
-   },
-   "cSpell.words": ["commiting", "directus", "turbopack", "vercel"],
-   "[dockercompose]": {
-      "editor.defaultFormatter": "ms-azuretools.vscode-docker"
-   }
+	"cSpell.words": [
+		"clsx",
+		"commiting",
+		"directus",
+		"emojione",
+		"humbleicons",
+		"iconify",
+		"NUXT",
+		"nuxtjs",
+		"octicon",
+		"pinia",
+		"turbopack",
+		"vercel",
+		"vueuse"
+	],
+	"[dockercompose]": {
+		"editor.defaultFormatter": "ms-azuretools.vscode-docker"
+	}
 }

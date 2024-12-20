@@ -1,0 +1,3 @@
+const queryKey = {};
+
+export { queryKey };

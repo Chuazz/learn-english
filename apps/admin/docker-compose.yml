@@ -9,4 +9,4 @@ services:
       - ./uploads:/directus/uploads
       - ./extensions:/directus/extensions
     env_file:
-      - .env.development
+      - .env
