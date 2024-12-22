@@ -1,11 +1,26 @@
-import type { modal } from '#build/imports';
-import type { Modal } from '~/types/modal';
+import AlertModal from '~/components/modal/alert-modal.vue';
+import ExpiredModal from '~/components/modal/expired-modal.vue';
+import type { ComponentProps } from 'vue-component-type-helpers';
+
+const modal = {
+	expired: ExpiredModal,
+	alert: AlertModal,
+};
+
+type ModalMap = {
+	[K in keyof typeof modal]: {
+		name: K;
+		props?: Partial<ComponentProps<(typeof modal)[K]>>;
+	};
+};
+
+type Modal = ModalMap[keyof ModalMap];
 
 const useModalStore = defineStore('modal', () => {
 	const modals = ref<Modal[]>([]);
 
-	const openModal = (modal: Modal) => {
-		modals.value.push(modal);
+	const openModal = (item: Modal) => {
+		modals.value.push(item);
 	};
 
 	const closeModal = (modalName: keyof typeof modal) => {

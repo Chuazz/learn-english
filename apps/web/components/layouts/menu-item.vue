@@ -56,8 +56,8 @@
 </template>
 
 <script lang="ts" setup>
-import type { Option } from '~/types/common';
 import clsx from 'clsx';
+import type { Option } from '@repo/types';
 
 const { data } = defineProps<{
 	data: Option;

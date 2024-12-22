@@ -1,35 +1,59 @@
 <template>
-	<div class="min-h-screen flex items-center justify-center bg-slate-100">
-		<UCard class="max-w-sm w-screen">
-			<template #header>
-				<p class="font-bold text-xl text-center">{{ config.public.APP_NAME }}</p>
-			</template>
+	<div class="flex items-center justify-center h-full flex-col py-20">
+		<div class="w-full max-w-[688px]">
+			<div class="flex items-center justify-between mb-8">
+				<p class="font-bold text-2xl">{{ $t('auth.login_to_lexifun') }}</p>
 
-			<div class="flex flex-col gap-3">
-				<p class="text-center mb-3">{{ $t('common.action.login_to_continue') }}</p>
+				<div class="flex items-center gap-4">
+					<p>{{ $t('auth.new_to_lexifun') }}</p>
 
-				<Input
-					icon="material-symbols:mail"
-					name="email"
-					placeholder="Email"
-				/>
-
-				<Input
-					icon="material-symbols:lock-open"
-					name="password"
-					placeholder="Password"
-					format="password"
-				/>
-
-				<UButton
-					class="mt-3"
-					:label="$t('common.action.login')"
-					:loading="isMutating > 0"
-					:block="true"
-					@click="onLogin"
-				/>
+					<UButton
+						:label="$t('common.action.register')"
+						color="black"
+						variant="outline"
+						to="/auth/register"
+						trailing-icon="uil:arrow-right"
+					/>
+				</div>
 			</div>
-		</UCard>
+
+			<UCard
+				class="bg-black-950"
+				:ui="{
+					ring: 'ring-black-900',
+					divide: 'divide-black-900',
+				}"
+			>
+				<div class="flex flex-col gap-5">
+					<Input
+						name="email"
+						:label="$t('auth.field.email')"
+					/>
+
+					<Input
+						name="password"
+						:label="$t('auth.field.password')"
+						format="password"
+					/>
+
+					<NuxtLink
+						to="/auth/forgot-password"
+						class="text-right text-blue-500 hover:text-blue-700"
+					>
+						{{ $t('auth.forgot_password') }}
+					</NuxtLink>
+
+					<UButton
+						class="mt-3"
+						size="xl"
+						:label="$t('common.action.login')"
+						:loading="isMutating > 0"
+						:block="true"
+						@click="onLogin"
+					/>
+				</div>
+			</UCard>
+		</div>
 	</div>
 </template>
 
@@ -40,6 +64,7 @@ import { useAuthStore } from '~/stores/auth-store';
 
 definePageMeta({
 	title: 'common.action.login',
+	layout: 'user',
 });
 
 const loginSchema = z.object({
@@ -50,25 +75,18 @@ const loginSchema = z.object({
 const isMutating = useIsMutating();
 const loginMutate = useLogin();
 const authStore = useAuthStore();
-const config = useRuntimeConfig();
-const { t } = useI18n();
 
-const { handleSubmit, values, resetForm } = useForm({
+const { handleSubmit } = useForm({
 	validationSchema: toTypedSchema(loginSchema),
 	initialValues: {
-		email: '0394101088',
-		password: '11111111',
+		email: 'sonnv1912@gmail.com',
+		password: '111111',
 	},
 });
 
 const onLogin = handleSubmit(async (data) => {
-	await loginMutate.mutateAsync(data);
+	const response = await loginMutate.mutateAsync(data);
 
-	// authStore.setCompany(selectBranchResponse?.data.company_info);
-	// authStore.setUser(selectBranchResponse?.data.user);
-	// authStore.setPermissions(selectBranchResponse?.data.permissions);
-	// authStore.setExpired(selectBranchResponse?.data.expired_at);
-
-	// await navigateTo('/dashboard');
+	authStore.setExpired(response?.expires);
 });
 </script>

@@ -1,13 +1,11 @@
 <template>
-	<div class="flex items-center justify-between shadow-t-md h-14 px-4 text-slate-600 text-sm">
-		<p class="font-semibold">{{ config.public.APP_NAME }}</p>
-
-		<p>© {{ config.public.APP_NAME }}</p>
+	<div class="py-8 bg-black-950 border-t border-t-black-900">
+		<div class="max-w-screen-lg flex items-center justify-between mx-auto">
+			<Logo />
+		</div>
 	</div>
 </template>
 
-<script lang="ts" setup>
-const config = useRuntimeConfig();
-</script>
+<script lang="ts" setup></script>
 
 <style></style>

@@ -10,14 +10,18 @@
 		"postinstall": "nuxt prepare"
 	},
 	"dependencies": {
+		"@nuxt/image": "1.8.1",
 		"@nuxt/ui": "2.19.2",
 		"@nuxtjs/i18n": "9.0.0-rc.2",
 		"@pinia/nuxt": "0.8.0",
+		"@repo/assets": "workspace:*",
+		"@repo/utils": "workspace:*",
 		"@tanstack/vue-query": "^5.62.1",
 		"@vee-validate/nuxt": "^4.14.7",
 		"@vee-validate/zod": "^4.14.7",
 		"@vueuse/core": "^12.0.0",
 		"clsx": "^2.1.1",
+		"cookie-es": "^1.2.2",
 		"date-fns": "^4.1.0",
 		"numeral": "^2.0.6",
 		"nuxt": "^3.14.1592",
@@ -26,12 +30,15 @@
 		"vue": "latest",
 		"vue-component-type-helpers": "^2.1.10",
 		"vue-router": "latest",
-		"zod": "^3.23.8"
+		"zod": "^3.23.8",
+		"@directus/sdk": "^18.0.3"
 	},
 	"devDependencies": {
+		"@faker-js/faker": "^9.3.0",
 		"@iconify-json/bi": "^1.2.1",
 		"@iconify-json/circum": "^1.2.1",
 		"@iconify-json/emojione": "^1.2.0",
+		"@iconify-json/ep": "^1.2.2",
 		"@iconify-json/humbleicons": "^1.2.4",
 		"@iconify-json/ic": "^1.2.1",
 		"@iconify-json/icon-park-solid": "^1.2.1",
@@ -43,12 +50,10 @@
 		"@iconify-json/ph": "^1.2.1",
 		"@nuxt/eslint": "0.7.2",
 		"@types/numeral": "^2.0.5",
-		"eslint": "^8.57.0 || ^9.0.0",
+		"eslint": "9.17.0",
 		"nuxt-typed-router": "3.7.1",
 		"prettier": "^2.5.x || 3.x",
-		"typescript": "^5.7.2"
-	},
-	"resolutions": {
-		"autoprefixer": "10.4.20"
+		"typescript": "^5.7.2",
+		"@repo/types": "workspace:*"
 	}
 }

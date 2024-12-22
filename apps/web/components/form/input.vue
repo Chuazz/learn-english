@@ -1,13 +1,25 @@
 <template>
 	<div>
-		<UInput
-			:model-value="value"
-			:color="errorMessage ? 'red' : 'white'"
-			:type="format === 'password' ? 'password' : 'text'"
+		<p
+			v-if="label"
+			class="text-md font-semibold mb-2"
+		>
+			{{ label }}
+		</p>
+
+		<input
+			:class="
+				clsx(
+					'bg-transparent px-4 py-3 rounded-lg border border-black-900',
+					'w-full outline-none focus:border-blue-500',
+					{
+						'border-red-500': !!errorMessage,
+					},
+				)
+			"
+			:value="value"
 			:placeholder="placeholder"
-			:icon="icon"
-			:trailing="iconPosition === 'right'"
-			@update:model-value="onInput"
+			@input="onInput"
 		/>
 
 		<small
@@ -20,7 +32,10 @@
 </template>
 
 <script lang="ts" setup>
+import clsx from 'clsx';
+
 const props = defineProps<{
+	label?: string;
 	name: string;
 	icon?: string;
 	placeholder?: string;
@@ -30,14 +45,14 @@ const props = defineProps<{
 
 const { value, errorMessage, handleChange } = useField<string>(() => props.name);
 
-const onInput = (e: string) => {
-	let value = e;
+const onInput = (event: Event) => {
+	let value = (event.target as HTMLInputElement)?.value;
 
 	if (props.format === 'number') {
 		value = value.replace(/\D+/g, '');
 	}
 
-	handleChange(value, false);
+	handleChange(value);
 };
 </script>
 

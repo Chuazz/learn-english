@@ -1,7 +1,10 @@
+import { ACCESS_TOKEN } from '@repo/utils';
 import { useLocalStorage } from '@vueuse/core';
 import { defineStore, skipHydrate } from 'pinia';
 
 const useAuthStore = defineStore('auth', () => {
+	const accessToken = useCookie(ACCESS_TOKEN);
+
 	const auth = ref(
 		useLocalStorage('auth', {
 			user: {},
@@ -10,7 +13,7 @@ const useAuthStore = defineStore('auth', () => {
 	);
 
 	const isLogin = computed(() => {
-		return !!cookies.get('access_token') && !!cookies.get('branch_token');
+		return !!accessToken.value;
 	});
 
 	const user = computed(() => {
@@ -40,8 +43,7 @@ const useAuthStore = defineStore('auth', () => {
 	const logout = async () => {
 		auth.value = null;
 
-		cookies.delete('access_token');
-		cookies.delete('branch_token');
+		accessToken.value = null;
 
 		await navigateTo('/auth/login');
 	};

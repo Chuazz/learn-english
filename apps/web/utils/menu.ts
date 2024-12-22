@@ -1,4 +1,4 @@
-import type { Option } from '~/types/common';
+import type { Option } from '@repo/types';
 
 const menu: Option[] = [
 	{

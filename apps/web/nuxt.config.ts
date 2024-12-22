@@ -1,6 +1,9 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
 	compatibilityDate: '2024-11-01',
+	devServer: {
+		port: 2222,
+	},
 	devtools: {
 		enabled: false,
 	},
@@ -22,11 +25,12 @@ export default defineNuxtConfig({
 	},
 	runtimeConfig: {
 		public: {
-			ENVIRONMENT: process.env.NUXT_ENVIRONMENT,
+			env: {
+				APP_NAME: process.env.NUXT_APP_NAME,
 
-			APP_NAME: process.env.NUXT_APP_NAME,
-
-			BASE_URL: process.env.NUXT_BASE_URL,
+				BASE_URL: process.env.NUXT_BASE_URL,
+				API_BASE_URL: process.env.NUXT_API_BASE_URL,
+			},
 		},
 	},
 	components: [
@@ -45,11 +49,12 @@ export default defineNuxtConfig({
 		'nuxt-typed-router',
 		'@vee-validate/nuxt',
 		'@nuxt/ui',
+		'@nuxt/image',
 	],
 	i18n: {
 		locales: ['vi'],
 		defaultLocale: 'vi',
-		vueI18n: '~/utils/i18n/index.ts',
+		vueI18n: '~/utils/i18n.ts',
 	},
 	pinia: {
 		storesDirs: ['~/stores/*'],
@@ -65,5 +70,8 @@ export default defineNuxtConfig({
 	},
 	ui: {
 		global: true,
+	},
+	image: {
+		dir: 'assets',
 	},
 });

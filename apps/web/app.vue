@@ -17,7 +17,10 @@
 <script lang="ts" setup>
 const route = useRoute();
 </script>
+
 <style>
+@import url('./assets/styles/global.css');
+
 .page-enter-active,
 .page-leave-active {
 	transition: all 0.3s;

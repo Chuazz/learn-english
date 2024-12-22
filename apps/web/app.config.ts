@@ -1,12 +1,14 @@
 export default defineAppConfig({
 	ui: {
+		primary: 'blue',
+		gray: 'black',
 		notifications: {
 			position: 'top-0 bottom-[unset]',
 		},
 		button: {
 			base: 'transition-all duration-200',
 			default: {
-				size: 'xl',
+				size: 'md',
 				loadingIcon: 'i-octicon-sync-24',
 			},
 			color: {
